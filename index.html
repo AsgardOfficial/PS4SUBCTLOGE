@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کاتالوگ بازی‌های زیرنویس‌دار PS4</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(22, 28, 45, 0.65);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent-color: #00d2ff;
+            --accent-hover: #00a8cc;
+            --subtitle-tag-bg: #ff9800;
+            --text-color: #f1f5f9;
+            --text-muted: #94a3b8;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 210, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(123, 31, 162, 0.15) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-color);
+            font-family: var(--font-family);
+            min-height: 100vh;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #00d2ff, #92fe9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Controls Section */
+        .controls {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .tag-btn:hover, .tag-btn.active {
+            background: var(--accent-color);
+            color: #000;
+            border-color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Grid Section */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* Game Card */
+        .game-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 210, 255, 0.2);
+            border-color: rgba(0, 210, 255, 0.4);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background-color: #1e293b;
+        }
+
+        .card-content {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .game-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+            line-height: 1.3;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+        }
+
+        .badge.sub-badge {
+            background: rgba(255, 152, 0, 0.2);
+            color: #ffb74d;
+            border: 1px solid rgba(255, 152, 0, 0.4);
+            font-weight: bold;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .size-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .size-info i {
+            margin-left: 5px;
+            color: var(--accent-color);
+        }
+
+        .btn-trailer {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s;
+        }
+
+        .btn-trailer:hover {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1><i class="fab fa-playstation"></i> کاتالوگ بازی‌های زیرنویس‌دار PS4</h1>
+        <p class="subtitle">مجموعه بازی‌های کنسول پی اس فور دارای زیرنویس فارسی</p>
+    </header>
+
+    <div class="controls">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="جستجوی نام بازی...">
+        </div>
+        <div class="filter-tags" id="filterTags">
+            <button class="tag-btn active" data-filter="all">همه</button>
+            <button class="tag-btn" data-filter="اکشن">اکشن</button>
+            <button class="tag-btn" data-filter="جهان‌باز">جهان‌باز</button>
+            <button class="tag-btn" data-filter="داستانی">داستانی</button>
+            <button class="tag-btn" data-filter="ترسناک">ترسناک</button>
+            <button class="tag-btn" data-filter="سولز‌لایک">سولز‌لایک</button>
+            <button class="tag-btn" data-filter="نقش‌آفرینی">نقش‌آفرینی</button>
+        </div>
+    </div>
+
+    <div class="games-grid" id="gamesGrid">
+
+        <!-- 1. A Plague Tale: Innocence -->
+        <div class="game-card" data-title="A Plague Tale: Innocence" data-tags="اکشن,داستانی,ترسناک">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/752590/header.jpg" class="card-img" alt="A Plague Tale: Innocence" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">A Plague Tale: Innocence</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">داستانی</span>
+                    <span class="badge">ترسناک</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۳۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=A+Plague+Tale+Innocence+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. A Way Out -->
+        <div class="game-card" data-title="A Way Out" data-tags="اکشن,داستانی,کوآپ">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1222700/header.jpg" class="card-img" alt="A Way Out" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">A Way Out</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">داستانی</span>
+                    <span class="badge">کوآپ</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۲۲ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=A+Way+Out+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Alan Wake Remastered -->
+        <div class="game-card" data-title="Alan Wake Remastered" data-tags="اکشن,داستانی,ترسناک">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/108710/header.jpg" class="card-img" alt="Alan Wake Remastered" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Alan Wake Remastered</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">داستانی</span>
+                    <span class="badge">ترسناک</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۳۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Alan+Wake+Remastered+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Assassin's Creed IV Black Flag -->
+        <div class="game-card" data-title="Assassin's Creed IV Black Flag" data-tags="اکشن,جهان‌باز,داستانی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/242050/header.jpg" class="card-img" alt="Assassin's Creed IV Black Flag" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Assassin's Creed IV Black Flag</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">داستانی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۲۳ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Assassins+Creed+IV+Black+Flag+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Assassin's Creed Mirage -->
+        <div class="game-card" data-title="Assassin's Creed Mirage" data-tags="اکشن,جهان‌باز,داستانی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/2841600/header.jpg" class="card-img" alt="Assassin's Creed Mirage" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Assassin's Creed Mirage</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">داستانی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۳۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Assassins+Creed+Mirage+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Assassin's Creed Odyssey -->
+        <div class="game-card" data-title="Assassin's Creed Odyssey" data-tags="اکشن,جهان‌باز,نقش‌آفرینی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/812140/header.jpg" class="card-img" alt="Assassin's Creed Odyssey" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Assassin's Creed Odyssey</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">نقش‌آفرینی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۸ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Assassins+Creed+Odyssey+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. Assassin's Creed Origins -->
+        <div class="game-card" data-title="Assassin's Creed Origins" data-tags="اکشن,جهان‌باز,نقش‌آفرینی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/582160/header.jpg" class="card-img" alt="Assassin's Creed Origins" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Assassin's Creed Origins</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">نقش‌آفرینی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Assassins+Creed+Origins+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. Assassin's Creed Valhalla -->
+        <div class="game-card" data-title="Assassin's Creed Valhalla" data-tags="اکشن,جهان‌باز,نقش‌آفرینی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/2208920/header.jpg" class="card-img" alt="Assassin's Creed Valhalla" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Assassin's Creed Valhalla</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">نقش‌آفرینی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۵۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Assassins+Creed+Valhalla+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. Atomic Heart -->
+        <div class="game-card" data-title="Atomic Heart" data-tags="اکشن,شوتر,نقش‌آفرینی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/668580/header.jpg" class="card-img" alt="Atomic Heart" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Atomic Heart</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">شوتر</span>
+                    <span class="badge">نقش‌آفرینی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۸ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Atomic+Heart+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. Batman: Arkham Knight -->
+        <div class="game-card" data-title="Batman: Arkham Knight" data-tags="اکشن,جهان‌باز,داستانی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/208650/header.jpg" class="card-img" alt="Batman: Arkham Knight" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Batman: Arkham Knight</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">داستانی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۵۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Batman+Arkham+Knight+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11. Bloodborne -->
+        <div class="game-card" data-title="Bloodborne" data-tags="اکشن,سولز‌لایک,نقش‌آفرینی">
+            <img src="https://images.alphacoders.com/605/605860.jpg" class="card-img" alt="Bloodborne" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Bloodborne</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">سولز‌لایک</span>
+                    <span class="badge">نقش‌آفرینی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۳۶ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Bloodborne+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 12. Cyberpunk 2077 -->
+        <div class="game-card" data-title="Cyberpunk 2077" data-tags="اکشن,جهان‌باز,نقش‌آفرینی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1091500/header.jpg" class="card-img" alt="Cyberpunk 2077" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Cyberpunk 2077</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">نقش‌آفرینی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۶۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Cyberpunk+2077+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 13. Dark Souls III -->
+        <div class="game-card" data-title="Dark Souls III" data-tags="اکشن,سولز‌لایک,نقش‌آفرینی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/374320/header.jpg" class="card-img" alt="Dark Souls III" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Dark Souls III</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">سولز‌لایک</span>
+                    <span class="badge">نقش‌آفرینی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۲۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Dark+Souls+III+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 14. Days Gone -->
+        <div class="game-card" data-title="Days Gone" data-tags="اکشن,جهان‌باز,ترسناک">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1259420/header.jpg" class="card-img" alt="Days Gone" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Days Gone</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">ترسناک</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Days+Gone+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 15. Dead Island 2 -->
+        <div class="game-card" data-title="Dead Island 2" data-tags="اکشن,ترسناک,جهان‌باز">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/2342660/header.jpg" class="card-img" alt="Dead Island 2" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Dead Island 2</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">ترسناک</span>
+                    <span class="badge">جهان‌باز</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۵۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Dead+Island+2+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 16. Devil May Cry 5 -->
+        <div class="game-card" data-title="Devil May Cry 5" data-tags="اکشن,هک_اند_اسلش">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/601150/header.jpg" class="card-img" alt="Devil May Cry 5" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Devil May Cry 5</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">هک اند اسلش</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۳۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Devil+May+Cry+5+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 17. Elden Ring -->
+        <div class="game-card" data-title="Elden Ring" data-tags="اکشن,جهان‌باز,سولز‌لایک">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1245620/header.jpg" class="card-img" alt="Elden Ring" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Elden Ring</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">سولز‌لایک</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Elden+Ring+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 18. Far Cry 3 Classic Edition -->
+        <div class="game-card" data-title="Far Cry 3 Classic Edition" data-tags="اکشن,جهان‌باز,شوتر">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/220240/header.jpg" class="card-img" alt="Far Cry 3 Classic Edition" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Far Cry 3 Classic Edition</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">شوتر</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۱۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Far+Cry+3+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 19. Far Cry 5 -->
+        <div class="game-card" data-title="Far Cry 5" data-tags="اکشن,جهان‌باز,شوتر">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/552520/header.jpg" class="card-img" alt="Far Cry 5" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Far Cry 5</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">شوتر</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Far+Cry+5+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 20. Far Cry 6 -->
+        <div class="game-card" data-title="Far Cry 6" data-tags="اکشن,جهان‌باز,شوتر">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/2369390/header.jpg" class="card-img" alt="Far Cry 6" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Far Cry 6</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">شوتر</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۶۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Far+Cry+6+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 21. Ghost of Tsushima -->
+        <div class="game-card" data-title="Ghost of Tsushima" data-tags="اکشن,جهان‌باز,داستانی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/2215430/header.jpg" class="card-img" alt="Ghost of Tsushima" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Ghost of Tsushima</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">داستانی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Ghost+of+Tsushima+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 22. God of War (2018) -->
+        <div class="game-card" data-title="God of War" data-tags="اکشن,داستانی,نقش‌آفرینی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1593500/header.jpg" class="card-img" alt="God of War" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">God of War</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">داستانی</span>
+                    <span class="badge">نقش‌آفرینی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=God+of+War+2018+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 23. God of War Ragnarök -->
+        <div class="game-card" data-title="God of War Ragnarök" data-tags="اکشن,داستانی,نقش‌آفرینی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/2322010/header.jpg" class="card-img" alt="God of War Ragnarök" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">God of War Ragnarök</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">داستانی</span>
+                    <span class="badge">نقش‌آفرینی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۸۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=God+of+War+Ragnarok+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 24. Grand Theft Auto V (GTA V) -->
+        <div class="game-card" data-title="Grand Theft Auto V (GTA V)" data-tags="اکشن,جهان‌باز,شوتر">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/271590/header.jpg" class="card-img" alt="Grand Theft Auto V" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">GTA V</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">شوتر</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۹۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=GTA+V+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 25. Hellblade: Senua's Sacrifice -->
+        <div class="game-card" data-title="Hellblade: Senua's Sacrifice" data-tags="اکشن,داستانی,روانشناختی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/414340/header.jpg" class="card-img" alt="Hellblade: Senua's Sacrifice" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Hellblade: Senua's Sacrifice</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">داستانی</span>
+                    <span class="badge">روانشناختی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۲۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Hellblade+Senuas+Sacrifice+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 26. Hogwarts Legacy -->
+        <div class="game-card" data-title="Hogwarts Legacy" data-tags="اکشن,جهان‌باز,نقش‌آفرینی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/990080/header.jpg" class="card-img" alt="Hogwarts Legacy" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Hogwarts Legacy</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">نقش‌آفرینی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۸۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Hogwarts+Legacy+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 27. Horizon Zero Dawn -->
+        <div class="game-card" data-title="Horizon Zero Dawn" data-tags="اکشن,جهان‌باز,نقش‌آفرینی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1151640/header.jpg" class="card-img" alt="Horizon Zero Dawn" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Horizon Zero Dawn</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">نقش‌آفرینی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۵۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Horizon+Zero+Dawn+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 28. It Takes Two -->
+        <div class="game-card" data-title="It Takes Two" data-tags="ماجراجویی,پلتفرمر,کوآپ">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1426210/header.jpg" class="card-img" alt="It Takes Two" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">It Takes Two</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">ماجراجویی</span>
+                    <span class="badge">پلتفرمر</span>
+                    <span class="badge">کوآپ</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=It+Takes+Two+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 29. Kena: Bridge of Spirits -->
+        <div class="game-card" data-title="Kena: Bridge of Spirits" data-tags="اکشن,ماجراجویی,فانتازیا">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1950660/header.jpg" class="card-img" alt="Kena: Bridge of Spirits" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Kena: Bridge of Spirits</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">ماجراجویی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۲۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Kena+Bridge+of+Spirits+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 30. L.A. Noire -->
+        <div class="game-card" data-title="L.A. Noire" data-tags="ماجراجویی,جنایی,جهان‌باز">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/110800/header.jpg" class="card-img" alt="L.A. Noire" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">L.A. Noire</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">ماجراجویی</span>
+                    <span class="badge">جنایی</span>
+                    <span class="badge">جهان‌باز</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۳۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=LA+Noire+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 31. Lies of P -->
+        <div class="game-card" data-title="Lies of P" data-tags="اکشن,سولز‌لایک,تاریک">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1627720/header.jpg" class="card-img" alt="Lies of P" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Lies of P</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">سولز‌لایک</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۳۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Lies+of+P+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 32. Life Is Strange -->
+        <div class="game-card" data-title="Life Is Strange" data-tags="داستانی,ماجراجویی,انتخابی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/319630/header.jpg" class="card-img" alt="Life Is Strange" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Life Is Strange</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">داستانی</span>
+                    <span class="badge">ماجراجویی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۱۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Life+Is+Strange+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 33. Little Nightmares -->
+        <div class="game-card" data-title="Little Nightmares" data-tags="پلتفرمر,ترسناک,معمایی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/424840/header.jpg" class="card-img" alt="Little Nightmares" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Little Nightmares</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">ترسناک</span>
+                    <span class="badge">پلتفرمر</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۱۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Little+Nightmares+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 34. Mafia: Definitive Edition -->
+        <div class="game-card" data-title="Mafia: Definitive Edition" data-tags="اکشن,جهان‌باز,داستانی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1030830/header.jpg" class="card-img" alt="Mafia Definitive Edition" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Mafia: Definitive Edition</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">داستانی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۳۷ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Mafia+Definitive+Edition+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 35. Metro Exodus -->
+        <div class="game-card" data-title="Metro Exodus" data-tags="اکشن,شوتر,ترسناک">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/412020/header.jpg" class="card-img" alt="Metro Exodus" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Metro Exodus</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">شوتر</span>
+                    <span class="badge">ترسناک</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Metro+Exodus+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 36. Outlast 2 -->
+        <div class="game-card" data-title="Outlast 2" data-tags="ترسناک,بقا,روانشناختی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/414700/header.jpg" class="card-img" alt="Outlast 2" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Outlast 2</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">ترسناک</span>
+                    <span class="badge">بقا</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۲۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Outlast+2+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 37. Red Dead Redemption 2 -->
+        <div class="game-card" data-title="Red Dead Redemption 2" data-tags="اکشن,جهان‌باز,داستانی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1174180/header.jpg" class="card-img" alt="Red Dead Redemption 2" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Red Dead Redemption 2</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">داستانی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۱۰۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Red+Dead+Redemption+2+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 38. Resident Evil 2 Remake -->
+        <div class="game-card" data-title="Resident Evil 2 Remake" data-tags="ترسناک,بقا,اکشن">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/883710/header.jpg" class="card-img" alt="Resident Evil 2" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Resident Evil 2</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">ترسناک</span>
+                    <span class="badge">بقا</span>
+                    <span class="badge">اکشن</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۲۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Resident+Evil+2+Remake+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 39. Resident Evil 3 Remake -->
+        <div class="game-card" data-title="Resident Evil 3 Remake" data-tags="ترسناک,بقا,اکشن">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/952060/header.jpg" class="card-img" alt="Resident Evil 3" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Resident Evil 3</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">ترسناک</span>
+                    <span class="badge">بقا</span>
+                    <span class="badge">اکشن</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۲۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Resident+Evil+3+Remake+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 40. Resident Evil 4 Remake -->
+        <div class="game-card" data-title="Resident Evil 4 Remake" data-tags="ترسناک,بقا,اکشن">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/2050650/header.jpg" class="card-img" alt="Resident Evil 4 Remake" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Resident Evil 4 Remake</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">ترسناک</span>
+                    <span class="badge">بقا</span>
+                    <span class="badge">اکشن</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۶۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Resident+Evil+4+Remake+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 41. Resident Evil 7 biohazard -->
+        <div class="game-card" data-title="Resident Evil 7 biohazard" data-tags="ترسناک,بقا,اول_شخص">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/418370/header.jpg" class="card-img" alt="Resident Evil 7 biohazard" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Resident Evil 7 biohazard</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">ترسناک</span>
+                    <span class="badge">بقا</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۲۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Resident+Evil+7+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 42. Resident Evil Village -->
+        <div class="game-card" data-title="Resident Evil Village" data-tags="ترسناک,بقا,اکشن">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1196590/header.jpg" class="card-img" alt="Resident Evil Village" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Resident Evil Village</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">ترسناک</span>
+                    <span class="badge">بقا</span>
+                    <span class="badge">اکشن</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۳۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Resident+Evil+Village+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 43. SIFU -->
+        <div class="game-card" data-title="SIFU" data-tags="اکشن,رزمی,سخت">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/2138710/header.jpg" class="card-img" alt="SIFU" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">SIFU</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">رزمی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۱۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=SIFU+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 44. STAR WARS Jedi: Fallen Order -->
+        <div class="game-card" data-title="STAR WARS Jedi: Fallen Order" data-tags="اکشن,ماجراجویی,سولز‌لایک">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1172380/header.jpg" class="card-img" alt="STAR WARS Jedi: Fallen Order" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">STAR WARS Jedi: Fallen Order</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">ماجراجویی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۵۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Star+Wars+Jedi+Fallen+Order+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 45. Sekiro: Shadows Die Twice -->
+        <div class="game-card" data-title="Sekiro: Shadows Die Twice" data-tags="اکشن,سولز‌لایک,سامورایی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/814380/header.jpg" class="card-img" alt="Sekiro: Shadows Die Twice" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Sekiro: Shadows Die Twice</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">سولز‌لایک</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۲۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Sekiro+Shadows+Die+Twice+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 46. Shadow of the Tomb Raider -->
+        <div class="game-card" data-title="Shadow of the Tomb Raider" data-tags="اکشن,ماجراجویی,داستانی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/750920/header.jpg" class="card-img" alt="Shadow of the Tomb Raider" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Shadow of the Tomb Raider</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">ماجراجویی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Shadow+of+the+Tomb+Raider+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 47. Stray -->
+        <div class="game-card" data-title="Stray" data-tags="ماجراجویی,پلتفرمر,سایبرپانک">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1332010/header.jpg" class="card-img" alt="Stray" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Stray</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">ماجراجویی</span>
+                    <span class="badge">پلتفرمر</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۱۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Stray+game+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 48. The Callisto Protocol -->
+        <div class="game-card" data-title="The Callisto Protocol" data-tags="ترسناک,بقا,اکشن">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1544020/header.jpg" class="card-img" alt="The Callisto Protocol" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">The Callisto Protocol</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">ترسناک</span>
+                    <span class="badge">بقا</span>
+                    <span class="badge">اکشن</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=The+Callisto+Protocol+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 49. The Evil Within 2 -->
+        <div class="game-card" data-title="The Evil Within 2" data-tags="ترسناک,بقا,اکشن">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/601430/header.jpg" class="card-img" alt="The Evil Within 2" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">The Evil Within 2</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">ترسناک</span>
+                    <span class="badge">بقا</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۳۲ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=The+Evil+Within+2+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 50. The Last of Us Part II -->
+        <div class="game-card" data-title="The Last of Us Part II" data-tags="اکشن,داستانی,ترسناک">
+            <img src="https://images.alphacoders.com/108/1082488.jpg" class="card-img" alt="The Last of Us Part II" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">The Last of Us Part II</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">داستانی</span>
+                    <span class="badge">ترسناک</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۸۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=The+Last+of+Us+Part+II+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 51. The Last of Us Remastered -->
+        <div class="game-card" data-title="The Last of Us Remastered" data-tags="اکشن,داستانی,ترسناک">
+            <img src="https://images.alphacoders.com/517/517622.jpg" class="card-img" alt="The Last of Us Remastered" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">The Last of Us Remastered</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">داستانی</span>
+                    <span class="badge">ترسناک</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=The+Last+of+Us+Remastered+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 52. The Witcher 3: Wild Hunt -->
+        <div class="game-card" data-title="The Witcher 3: Wild Hunt" data-tags="اکشن,جهان‌باز,نقش‌آفرینی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/292030/header.jpg" class="card-img" alt="The Witcher 3: Wild Hunt" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">The Witcher 3: Wild Hunt</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                    <span class="badge">نقش‌آفرینی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۵۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=The+Witcher+3+Wild+Hunt+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 53. Uncharted 4: A Thief's End -->
+        <div class="game-card" data-title="Uncharted 4: A Thief's End" data-tags="اکشن,داستانی,ماجراجویی">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/1659420/header.jpg" class="card-img" alt="Uncharted 4: A Thief's End" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Uncharted 4: A Thief's End</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">داستانی</span>
+                    <span class="badge">ماجراجویی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۵۰ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Uncharted+4+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 54. Uncharted: The Lost Legacy -->
+        <div class="game-card" data-title="Uncharted: The Lost Legacy" data-tags="اکشن,داستانی,ماجراجویی">
+            <img src="https://images.alphacoders.com/832/832812.jpg" class="card-img" alt="Uncharted: The Lost Legacy" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Uncharted: The Lost Legacy</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">داستانی</span>
+                    <span class="badge">ماجراجویی</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Uncharted+The+Lost+Legacy+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 55. Watch Dogs: Legion -->
+        <div class="game-card" data-title="Watch Dogs: Legion" data-tags="اکشن,جهان‌باز,هک">
+            <img src="https://cdn.akamai.steamstatic.com/steam/apps/2239550/header.jpg" class="card-img" alt="Watch Dogs: Legion" loading="lazy">
+            <div class="card-content">
+                <h2 class="game-title">Watch Dogs: Legion</h2>
+                <div class="tags-container">
+                    <span class="badge sub-badge"><i class="fas fa-language"></i> زیرنویس فارسی</span>
+                    <span class="badge">اکشن</span>
+                    <span class="badge">جهان‌باز</span>
+                </div>
+                <div class="card-footer">
+                    <span class="size-info"><i class="fas fa-hdd"></i> ۴۵ گیگابایت</span>
+                    <a href="https://www.youtube.com/results?search_query=Watch+Dogs+Legion+trailer" target="_blank" class="btn-trailer"><i class="fab fa-youtube"></i> تریلر</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="no-results" id="noResults">بازی مورد نظر پیدا نشد.</div>
+    </div>
+</div>
+
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const filterButtons = document.querySelectorAll('.tag-btn');
+    const gameCards = document.querySelectorAll('.game-card');
+    const noResults = document.getElementById('noResults');
+
+    let currentFilter = 'all';
+
+    function filterGames() {
+        const query = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        gameCards.forEach(card => {
+            const title = card.getAttribute('data-title').toLowerCase();
+            const tags = card.getAttribute('data-tags');
+
+            const matchesSearch = title.includes(query);
+            const matchesTag = (currentFilter === 'all') || tags.includes(currentFilter);
+
+            if (matchesSearch && matchesTag) {
+                card.style.display = 'flex';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    searchInput.addEventListener('input', filterGames);
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.getAttribute('data-filter');
+            filterGames();
+        });
+    });
+</script>
+
+</body>
+</html>
